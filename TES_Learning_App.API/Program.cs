@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TES_Learning_App.Infrastructure;
+using TES_Learning_App.Infrastructure.Data;
 
 namespace TES_Learning_App.API
 
