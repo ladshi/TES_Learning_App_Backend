@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,11 @@ namespace TES_Learning_App.Domain.Entities
 {
     public class Level
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string LevelName { get; set; } = string.Empty;
 
         // Foreign Key to Language

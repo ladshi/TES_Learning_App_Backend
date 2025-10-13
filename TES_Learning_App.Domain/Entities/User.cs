@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,22 @@ namespace TES_Learning_App.Domain.Entities
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string Username { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(255)]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
+
+        [Required]
         public byte[] PasswordHash { get; set; } = [];
+
+        [Required]
         public byte[] PasswordSalt { get; set; } = [];
 
         // Foreign Key to Role
