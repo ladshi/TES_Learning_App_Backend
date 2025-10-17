@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\EntityConfiguration\" />
+    <Folder Include="Data\DbIntializers_Seeds\" />
+    <Folder Include="Data\Interceptors\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 

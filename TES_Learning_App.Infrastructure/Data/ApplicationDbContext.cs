@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TES_Learning_App.Domain.Entities;
@@ -29,5 +30,15 @@ public class ApplicationDbContext : DbContext
 
     // --- The Bridge ---
     public DbSet<StudentProgress> StudentProgresses { get; set; }
+
+    // This is the method that finds and applies all your configuration classes
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // This line automatically scans the entire Infrastructure project for all
+        // classes that implement IEntityTypeConfiguration and applies them.
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }
 

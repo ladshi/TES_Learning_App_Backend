@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TES_Learning_App.Infrastructure.Data
+namespace TES_Learning_App.Application_Layer.Validators.Auth
 {
-    internal class DbInitializer
+    internal class RegisterRequestDtoValidator
     {
     }
 }
