@@ -36,5 +36,8 @@ namespace TES_Learning_App.Domain.Entities
         //public Student? Student { get; set; }
         // A User (Parent) can have a collection of Student (Child) profiles.
         public ICollection<Student> StudentProfiles { get; set; } = new List<Student>();
+
+        // One-to-one relationship with an Admin profile
+        public Admin? AdminProfile { get; set; }
     }
 }
