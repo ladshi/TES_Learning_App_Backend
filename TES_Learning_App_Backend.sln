@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TES_Learning_App.Domain", "TES_Learning_App.Domain\TES_Learning_App.Domain.csproj", "{2D8557DE-DB90-4C29-8D19-6792FCCCC426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TES_Learning_App.Application Layer", "TES_Learning_App.Application Layer\TES_Learning_App.Application Layer.csproj", "{CC57F266-9E59-40A3-95C9-B782A30D17B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TES_Learning_App.Application_Layer", "TES_Learning_App.Application_Layer\TES_Learning_App.Application_Layer.csproj", "{CC57F266-9E59-40A3-95C9-B782A30D17B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TES_Learning_App.Infrastructure", "TES_Learning_App.Infrastructure\TES_Learning_App.Infrastructure.csproj", "{8AB5789D-F0A8-47AC-8EF3-6FA7713074B0}"
 EndProject
