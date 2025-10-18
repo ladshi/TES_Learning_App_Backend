@@ -13,9 +13,9 @@ namespace TES_Learning_App.Domain.Common
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Avatar { get; set; } = string.Empty; // The shared Avatar property!
+        //[Required]
+        //[StringLength(100)]
+        //public string Avatar { get; set; } = string.Empty; // The shared Avatar property!
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

@@ -10,11 +10,13 @@ namespace TES_Learning_App.Domain.Entities
 {
     public class Admin : BaseProfile
     {
-        // 'Id', 'Avatar', 'UserId', and 'User' are all inherited automatically.
+        // 'Id', 'UserId', and 'User' are all inherited automatically.
 
         [Required]
         [StringLength(255)]
         public string FullName { get; set; } = string.Empty;
+
+        public string? ProfileImageUrl { get; set; }
 
         [StringLength(100)]
         public string? JobTitle { get; set; } // e.g., "Content Manager"

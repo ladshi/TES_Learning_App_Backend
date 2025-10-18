@@ -15,6 +15,13 @@ namespace TES_Learning_App.Infrastructure.Data.EntityConfiguration
         {
             // Id, Avatar, and CreatedAt are inherited from BaseProfile.
 
+            // --- CONFIGURE INHERITED PROPERTIES ---
+            builder.Property(a => a.ProfileImageUrl)
+                   .HasMaxLength(100);
+
+            builder.Property(a => a.CreatedAt)
+                   .IsRequired();
+
             builder.Property(a => a.FullName)
                    .IsRequired()
                    .HasMaxLength(255);

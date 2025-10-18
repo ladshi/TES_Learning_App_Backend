@@ -18,6 +18,8 @@ namespace TES_Learning_App.Domain.Entities
         [StringLength(100)]
         public string Nickname { get; set; } = string.Empty;
 
+        public string Avatar { get; set; } = string.Empty;
+
         // We store Date of Birth to calculate age for content filtering.
         // We must treat this as sensitive data.
         [Required]

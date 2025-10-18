@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TES_Learning_App.Domain.Common;
 
 namespace TES_Learning_App.Domain.Entities
 {
-    public class Activity
+    public class Activity : BaseTranslation
     {
         [Key]
         public int Id { get; set; }
