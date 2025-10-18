@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TES_Learning_App.Application_Layer\TES_Learning_App.Application_Layer.csproj" />
-    <ProjectReference Include="..\TES_Learning_App.Domain\TES_Learning_App.Domain.csproj" />
+    <ProjectReference Include="..\TES_Learning_App.Application Layer\TES_Learning_App.Application Layer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

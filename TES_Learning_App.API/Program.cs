@@ -1,11 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TES_Learning_App.Infrastructure.Data;
-using TES_Learning_App.Application_Layer.Interfaces;
-using TES_Learning_App.Application_Layer.Services;
-using TES_Learning_App.Domain.Interfaces.Repositories;
-using TES_Learning_App.Infrastructure.Repositories;
-using AutoMapper;
-using TES_Learning_App.API.Profiles;
 
 namespace TES_Learning_App.API
 
@@ -21,20 +15,13 @@ namespace TES_Learning_App.API
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add services to the container.
+
             builder.Services.AddControllers();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-
-            // Register AutoMapper
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            // Register Services
-            builder.Services.AddScoped<ILevelService, LevelService>();
-            
-            // Register Repositories
-            builder.Services.AddScoped<ILevelRepository, LevelRepository>();
           
             // 2. Build the application.
             var app = builder.Build();
