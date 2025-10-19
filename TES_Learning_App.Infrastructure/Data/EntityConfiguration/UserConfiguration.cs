@@ -16,6 +16,8 @@ namespace TES_Learning_App.Infrastructure.Data.EntityConfiguration
             // Define Primary Key
             builder.HasKey(u => u.Id);
 
+            builder.Property(u => u.Id).ValueGeneratedOnAdd();
+
             // Define constraints for properties
             builder.Property(u => u.Username).IsRequired().HasMaxLength(100);
             builder.HasIndex(u => u.Username).IsUnique(); // Ensure usernames are unique

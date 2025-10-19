@@ -36,7 +36,7 @@ namespace TES_Learning_App.Domain.Entities
         // --- The relationship is now different ---
         // A Student profile is created by a User (the Parent).
         // So we rename UserId to ParentUserId to be clear.
-        public int ParentId { get; set; }
+        public Guid ParentId { get; set; }
         public User Parent { get; set; } = null!;
     }
 }
