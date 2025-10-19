@@ -10,7 +10,7 @@ namespace TES_Learning_App.Domain.Entities
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -28,7 +28,7 @@ namespace TES_Learning_App.Domain.Entities
         public byte[] PasswordSalt { get; set; } = [];
 
         // Foreign Key to Role
-        public int RoleId { get; set; }
+        public Guid RoleId { get; set; }
         // Navigation Property: A User has one Role
         public Role Role { get; set; } = null!;
 

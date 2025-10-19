@@ -12,10 +12,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\Auth\Requests\" />
     <Folder Include="Interfaces\Infrastructure\" />
-    <Folder Include="Interfaces\IServices\" />
     <Folder Include="Interfaces\IRepositories\" />
+    <Folder Include="Interfaces\IServices\" />
     <Folder Include="Services\" />
+    <Folder Include="Validators\Auth\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
   </ItemGroup>
 
 </Project>

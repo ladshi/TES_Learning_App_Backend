@@ -16,11 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TES_Learning_App.Application Layer\TES_Learning_App.Application Layer.csproj" />
+    <ProjectReference Include="..\TES_Learning_App.Application Layer\TES_Learning_App.Application_Layer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\DbIntializers_Seeds\" />
     <Folder Include="Data\Interceptors\" />
     <Folder Include="Repositories\" />
   </ItemGroup>

@@ -22,7 +22,7 @@ namespace TES_Learning_App.Domain.Entities
         public string? JobTitle { get; set; } // e.g., "Content Manager"
 
         // --- THE UNIQUE ONE-TO-ONE RELATIONSHIP LOGIC LIVES HERE ---
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public User User { get; set; } = null!;
     }
 }

@@ -20,8 +20,8 @@ namespace TES_Learning_App.Domain.Entities
 
         // Foreign Key to User
         // Progress is tracked for a specific Student (child) profile
-        public int StudentId { get; set; }
-        public Student Student { get; set; } = null!;
+        public Guid? StudentId { get; set; }
+        public Student? Student { get; set; } = null!;
 
         // Foreign Key to Activity
         public int ActivityId { get; set; }
