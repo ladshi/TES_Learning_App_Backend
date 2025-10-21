@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using TES_Learning_App.API.Extensions;
+using TES_Learning_App.Application_Layer;
+using TES_Learning_App.Infrastructure;
 using TES_Learning_App.Infrastructure.Data;
+using TES_Learning_App.Infrastructure.Data.DbIntializers_Seeds;
 
 namespace TES_Learning_App.API
 
@@ -9,6 +13,11 @@ namespace TES_Learning_App.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddInfrastructureServices(builder.Configuration);
+
+            builder.Services.AddApplicationServices();
+
 
             // NEW DATABASE WIRING CODE
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -22,9 +31,29 @@ namespace TES_Learning_App.API
             builder.Services.AddOpenApi();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-          
+
+            // Add your custom Authentication Extension for JWT
+            builder.Services.AddApiAuthentication(builder.Configuration);
+
             // 2. Build the application.
             var app = builder.Build();
+
+            // --- DATABASE SEEDING ---
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    // This gets our DbContext and calls our Initializer method.
+                    DbInitializer.Initialize(context);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

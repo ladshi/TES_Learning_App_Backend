@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Auth\Requests\" />
-    <Folder Include="Interfaces\Infrastructure\" />
-    <Folder Include="Interfaces\IRepositories\" />
-    <Folder Include="Interfaces\IServices\" />
-    <Folder Include="Services\" />
     <Folder Include="Validators\Auth\" />
   </ItemGroup>
 
