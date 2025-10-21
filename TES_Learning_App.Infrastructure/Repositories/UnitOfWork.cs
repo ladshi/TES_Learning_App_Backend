@@ -12,6 +12,8 @@ namespace TES_Learning_App.Infrastructure.Repositories
     {
         private readonly ApplicationDbContext _context;
         public IAuthRepository AuthRepository { get; private set; }
+        public IStudentRepository StudentRepository { get; private set; }
+
 
         public UnitOfWork(ApplicationDbContext context)
         {

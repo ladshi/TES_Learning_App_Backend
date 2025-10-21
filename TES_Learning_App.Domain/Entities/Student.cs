@@ -33,6 +33,10 @@ namespace TES_Learning_App.Domain.Entities
         [StringLength(10)]
         public string TargetLanguageCode { get; set; } = string.Empty;
 
+        // --- ADVANCED FEATURES ---
+        public int XpPoints { get; set; } = 0; // For our gamification system
+        public bool IsDeleted { get; set; } = false; // For our soft-delete feature
+
         // --- The relationship is now different ---
         // A Student profile is created by a User (the Parent).
         // So we rename UserId to ParentUserId to be clear.
