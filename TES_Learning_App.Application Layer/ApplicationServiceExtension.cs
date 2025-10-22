@@ -18,7 +18,8 @@ namespace TES_Learning_App.Application_Layer
             services.AddScoped<IStageService, StageService>();
             services.AddScoped<IMainActivityService, MainActivityService>();
             services.AddScoped<IActivityTypeService, ActivityTypeService>();
-
+            services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<IRoleService, RoleService>();
             // Add other services here later (e.g., IStudentService)
 
             // 2. Register AutoMapper (we will add this later)

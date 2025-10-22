@@ -43,7 +43,7 @@ namespace TES_Learning_App.Application_Layer.Services
             var activityType = await _unitOfWork.ActivityTypeRepository.GetByIdAsync(id);
             if (activityType == null) throw new Exception("ActivityType not found.");
 
-            _unitOfWork.ActivityTypeRepository.Delete(activityType);
+            await _unitOfWork.ActivityTypeRepository.UpdateAsync(activityType);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -68,7 +68,7 @@ namespace TES_Learning_App.Application_Layer.Services
             activityType.Name_ta = dto.Name_ta;
             activityType.Name_si = dto.Name_si;
 
-            _unitOfWork.ActivityTypeRepository.Update(activityType);
+            await _unitOfWork.ActivityTypeRepository.UpdateAsync(activityType);
             await _unitOfWork.CompleteAsync();
         }
 

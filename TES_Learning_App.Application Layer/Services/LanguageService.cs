@@ -38,7 +38,7 @@ namespace TES_Learning_App.Application_Layer.Services
             var language = await _unitOfWork.LanguageRepository.GetByIdAsync(id);
             if (language == null) throw new Exception("Language not found.");
 
-            _unitOfWork.LanguageRepository.Delete(language);
+            await _unitOfWork.LanguageRepository.DeleteAsync(language);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -61,7 +61,7 @@ namespace TES_Learning_App.Application_Layer.Services
 
             language.LanguageName = dto.LanguageName;
 
-            _unitOfWork.LanguageRepository.Update(language);
+            await _unitOfWork.LanguageRepository.DeleteAsync(language);
             await _unitOfWork.CompleteAsync();
         }
 

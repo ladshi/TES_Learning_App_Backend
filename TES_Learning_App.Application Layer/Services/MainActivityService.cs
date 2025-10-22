@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TES_Learning_App.Application_Layer.DTOs.MainActivity.Requests;
+using TES_Learning_App.Application_Layer.DTOs.MainActivity.Response;
 using TES_Learning_App.Application_Layer.Interfaces.IRepositories;
 using TES_Learning_App.Application_Layer.Interfaces.IServices;
 using TES_Learning_App.Domain.Entities;
@@ -42,7 +43,7 @@ namespace TES_Learning_App.Application_Layer.Services
             var mainActivity = await _unitOfWork.MainActivityRepository.GetByIdAsync(id);
             if (mainActivity == null) throw new Exception("MainActivity not found.");
 
-            _unitOfWork.MainActivityRepository.Delete(mainActivity);
+            await _unitOfWork.MainActivityRepository.DeleteAsync(mainActivity);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -67,20 +68,20 @@ namespace TES_Learning_App.Application_Layer.Services
             mainActivity.Name_ta = dto.Name_ta;
             mainActivity.Name_si = dto.Name_si;
 
-            _unitOfWork.MainActivityRepository.Update(mainActivity);
+            await _unitOfWork.MainActivityRepository.UpdateAsync(mainActivity);
             await _unitOfWork.CompleteAsync();
         }
 
         // Private helper for consistent mapping
-        //private MainActivityDto MapToDto(MainActivity mainActivity)
-        //{
-        //    return new MainActivityDto
-        //    {
-        //        Id = mainActivity.Id,
-        //        Name_en = mainActivity.Name_en,
-        //        Name_ta = mainActivity.Name_ta,
-        //        Name_si = mainActivity.Name_si
-        //    };
-        //}
+        private MainActivityDto MapToDto(MainActivity mainActivity)
+        {
+            return new MainActivityDto
+            {
+                Id = mainActivity.Id,
+                Name_en = mainActivity.Name_en,
+                Name_ta = mainActivity.Name_ta,
+                Name_si = mainActivity.Name_si
+            };
+        }
     }
 }

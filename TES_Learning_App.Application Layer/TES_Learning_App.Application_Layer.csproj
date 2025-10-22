@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\MainActivity\Response\" />
     <Folder Include="Validators\Auth\" />
   </ItemGroup>
 

@@ -7,6 +7,7 @@ using TES_Learning_App.Application_Layer.DTOs.Stage.Requests;
 using TES_Learning_App.Application_Layer.DTOs.Stage.Response;
 using TES_Learning_App.Application_Layer.Interfaces.IRepositories;
 using TES_Learning_App.Domain.Entities;
+using TES_Learning_App.Application_Layer.Interfaces.IServices;
 
 namespace TES_Learning_App.Application_Layer.Services
 {
@@ -31,7 +32,7 @@ namespace TES_Learning_App.Application_Layer.Services
         {
             var stage = await _unitOfWork.StageRepository.GetByIdAsync(id);
             if (stage == null) throw new Exception("Stage not found.");
-            _unitOfWork.StageRepository.Delete(stage);
+            await _unitOfWork.StageRepository.DeleteAsync(stage);
             await _unitOfWork.CompleteAsync();
         }
         public async Task<IEnumerable<StageDto>> GetAllAsync()
@@ -51,7 +52,8 @@ namespace TES_Learning_App.Application_Layer.Services
             stage.Name_en = dto.Name_en;
             stage.Name_ta = dto.Name_ta;
             stage.Name_si = dto.Name_si;
-            _unitOfWork.StageRepository. Update(stage);
+
+            await _unitOfWork.StageRepository.UpdateAsync(stage);
             await _unitOfWork.CompleteAsync();
         }
         private StageDto MapToDto(Stage stage)

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TES_Learning_App.Application_Layer.DTOs.MainActivity.Requests;
+using TES_Learning_App.Application_Layer.DTOs.MainActivity.Response;
+using TES_Learning_App.Application_Layer.Interfaces.IServices;
 using TES_Learning_App.Application_Layer.Services;
 
 namespace TES_Learning_App.API.Controllers

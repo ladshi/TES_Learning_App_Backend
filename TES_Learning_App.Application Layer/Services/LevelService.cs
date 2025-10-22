@@ -7,8 +7,9 @@ using TES_Learning_App.Application_Layer.DTOs.Level.Requests;
 using TES_Learning_App.Application_Layer.DTOs.Level.Response;
 using TES_Learning_App.Application_Layer.Interfaces.IRepositories;
 using TES_Learning_App.Domain.Entities;
-
+using TES_Learning_App.Application_Layer.Interfaces.IServices;
 namespace TES_Learning_App.Application_Layer.Services
+
 {
     public class LevelService : ILevelService
     {
@@ -46,11 +47,13 @@ namespace TES_Learning_App.Application_Layer.Services
         {
             var level = await _unitOfWork.LevelRepository.GetByIdAsync(id);
             if (level == null)
-                throw new Exception("Level not found."); // Custom NotFoundException would be better
+                throw new Exception("Level not found.");
 
-            _unitOfWork.LevelRepository.Delete(level);
+            await _unitOfWork.LevelRepository.DeleteAsync(level);
+
             await _unitOfWork.CompleteAsync();
         }
+
 
         public async Task<IEnumerable<LevelDto>> GetAllAsync()
         {
@@ -75,7 +78,7 @@ namespace TES_Learning_App.Application_Layer.Services
             level.Name_ta = dto.Name_ta;
             level.Name_si = dto.Name_si;
 
-            _unitOfWork.LevelRepository.Update(level);
+            await _unitOfWork.LevelRepository.UpdateAsync(level);
             await _unitOfWork.CompleteAsync();
         }
 
