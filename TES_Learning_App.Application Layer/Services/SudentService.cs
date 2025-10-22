@@ -30,7 +30,7 @@ namespace TES_Learning_App.Application_Layer.Services
                 XpPoints = 0
             };
 
-            await _unitOfWork.StudentRepository.AddAsync(student);
+            object value = await _unitOfWork.StudentRepository.AddAsync(student);
             await _unitOfWork.CompleteAsync();
 
             return MapToStudentDto(student);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +14,9 @@ namespace TES_Learning_App.Application_Layer.Interfaces.IRepositories
         Task<T?> GetByIdAsync(int id); // Changed to int for content, but we can adapt this
         Task<T?> GetByIdAsync(Guid id); // Overload for Guid
         Task<IReadOnlyList<T>> GetAllAsync();
+        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> expression);
         Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
+        Task UpdateAsync(T entity); 
         Task DeleteAsync(T entity);
     }
 }

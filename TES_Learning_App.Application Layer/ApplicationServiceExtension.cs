@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TES_Learning_App.Application_Layer.Interfaces.IRepositories;
 using TES_Learning_App.Application_Layer.Interfaces.IServices;
 using TES_Learning_App.Application_Layer.Services;
 
@@ -11,6 +12,13 @@ namespace TES_Learning_App.Application_Layer
         {
             // 1. Register Business Logic Services
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ILanguageService, LanguageService>();
+            services.AddScoped<ILevelService, LevelService>();
+            services.AddScoped<IStageService, StageService>();
+            services.AddScoped<IMainActivityService, MainActivityService>();
+            services.AddScoped<IActivityTypeService, ActivityTypeService>();
+
             // Add other services here later (e.g., IStudentService)
 
             // 2. Register AutoMapper (we will add this later)

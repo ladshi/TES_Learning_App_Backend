@@ -21,3 +21,4 @@ namespace TES_Learning_App.Domain.Entities
         public ICollection<Level> Levels { get; set; } = new List<Level>();
     }
 }
+ 

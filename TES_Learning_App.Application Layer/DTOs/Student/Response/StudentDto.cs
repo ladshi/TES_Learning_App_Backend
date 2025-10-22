@@ -13,5 +13,8 @@ namespace TES_Learning_App.Application_Layer.DTOs.Student.Response
         public string Avatar { get; set; } = string.Empty;
         public int Age { get; set; } // The calculated age!
         public int XpPoints { get; set; } // The gamification score!
+        public string NativeLanguageCode { get; set; } = string.Empty;
+        public string TargetLanguageCode { get; set; } = string.Empty;
     }
+
 }
