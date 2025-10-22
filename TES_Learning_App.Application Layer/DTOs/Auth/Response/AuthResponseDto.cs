@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TES_Learning_App.Application_Layer.DTOs.Auth.Response
 {
-    internal class AuthSucessResponseDto
+    public class AuthResponseDto
     {
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public string? Token { get; set; }
     }
 }
