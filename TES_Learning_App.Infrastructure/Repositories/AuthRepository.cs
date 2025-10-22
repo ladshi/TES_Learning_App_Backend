@@ -64,11 +64,6 @@ namespace TES_Learning_App.Infrastructure.Repositories
                                  .ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> FindUsersByRoleIdAsync(Guid roleId)
-        {
-            return await _context.Users
-                                 .Where(u => u.RoleId == roleId)
-                                 .ToListAsync();
-        }
+        
     }
 }

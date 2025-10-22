@@ -7,6 +7,7 @@ using TES_Learning_App.Application_Layer.DTOs.Activity.Requests;
 using TES_Learning_App.Application_Layer.DTOs.Activity.Response;
 using TES_Learning_App.Application_Layer.Interfaces.IRepositories;
 using TES_Learning_App.Application_Layer.Interfaces.IServices;
+using TES_Learning_App.Domain.Entities;
 
 namespace TES_Learning_App.Application_Layer.Services
 {
@@ -23,7 +24,7 @@ namespace TES_Learning_App.Application_Layer.Services
         {
             // We could add validation here to ensure the StageId, etc., are valid.
 
-            var activity = new ActivityDto
+            var activity = new Activity
             {
                 Details_JSON = dto.Details_JSON,
                 StageId = dto.StageId,
@@ -70,7 +71,7 @@ namespace TES_Learning_App.Application_Layer.Services
             await _unitOfWork.CompleteAsync();
         }
 
-        private ActivityDto MapToDto(ActivityDto activity)
+        private ActivityDto MapToDto(Activity activity)
         {
             return new ActivityDto
             {
