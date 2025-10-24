@@ -87,6 +87,85 @@ namespace TES_Learning_App.Application_Layer.Services
             return await LoginAsync(loginDto);
         }
 
+        public async Task<object> CheckAdminUserAsync()
+        {
+            var adminUser = await _unitOfWork.AuthRepository.GetUserByIdentifierAsync("admin");
+            if (adminUser == null)
+            {
+                return new { exists = false, message = "Admin user not found" };
+            }
+            return new { 
+                exists = true, 
+                username = adminUser.Username, 
+                email = adminUser.Email, 
+                role = adminUser.Role?.RoleName 
+            };
+        }
+
+        public async Task<object> CreateAdminUserAsync()
+        {
+            try
+            {
+                // Check if admin user already exists
+                var existingAdmin = await _unitOfWork.AuthRepository.GetUserByIdentifierAsync("admin");
+                if (existingAdmin != null)
+                {
+                    // Update existing admin user to have Admin role
+                    var adminRole = await _unitOfWork.RoleRepository.GetAllAsync();
+                    var adminRoleEntity = adminRole.FirstOrDefault(r => r.RoleName == "Admin");
+                    if (adminRoleEntity != null)
+                    {
+                        existingAdmin.RoleId = adminRoleEntity.Id;
+                        existingAdmin.Role = adminRoleEntity;
+                        await _unitOfWork.CompleteAsync();
+                        return new { success = true, message = "Existing admin user updated with Admin role" };
+                    }
+                }
+
+                // Get the Admin role
+                var adminRoleList = await _unitOfWork.RoleRepository.GetAllAsync();
+                var adminRoleForNewUser = adminRoleList.FirstOrDefault(r => r.RoleName == "Admin");
+                if (adminRoleForNewUser == null)
+                {
+                    return new { success = false, message = "Admin role not found" };
+                }
+
+                // Create password hash for default admin
+                CreatePasswordHash("Admin123!", out byte[] passwordHash, out byte[] passwordSalt);
+
+                // Create default admin user
+                var adminUser = new User
+                {
+                    Id = Guid.NewGuid(),
+                    Username = "admin",
+                    Email = "admin@teslearning.com",
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    RoleId = adminRoleForNewUser.Id,
+                    Role = adminRoleForNewUser
+                };
+
+                // Add the user directly to avoid RegisterAsync assigning Parent role
+                await _unitOfWork.UserRepository.AddAsync(adminUser);
+                await _unitOfWork.CompleteAsync();
+
+                return new { success = true, message = "Admin user created successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new { success = false, message = $"Error creating admin user: {ex.Message}" };
+            }
+        }
+
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
         // --- THE NEW, DEDICATED VALIDATOR FOR LOGIN ---
         private List<string> ValidateLogin(LoginDto dto)
         {

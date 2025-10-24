@@ -10,6 +10,7 @@ namespace TES_Learning_App.Infrastructure.Repositories
         private readonly ApplicationDbContext _context;
         public IAuthRepository AuthRepository { get; private set; }
         public IStudentRepository StudentRepository { get; private set; } // Use the specific interface
+        public IGenericRepository<User> UserRepository { get; private set; }
         public IGenericRepository<Role> RoleRepository { get; private set; }
         public IGenericRepository<Admin> AdminRepository { get; private set; }
         public IGenericRepository<Language> LanguageRepository { get; private set; }
@@ -20,7 +21,24 @@ namespace TES_Learning_App.Infrastructure.Repositories
         public IGenericRepository<Activity> ActivityRepository { get; private set; }
         public IGenericRepository<StudentProgress> StudentProgressRepository { get; private set; }
 
+        public UnitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+            AuthRepository = new AuthRepository(_context);
+            StudentRepository = new StudentRepository(_context);
+            UserRepository = new GenericRepository<User>(_context);
+            RoleRepository = new GenericRepository<Role>(_context);
+            AdminRepository = new GenericRepository<Admin>(_context);
+            LanguageRepository = new GenericRepository<Language>(_context);
+            LevelRepository = new GenericRepository<Level>(_context);
+            StageRepository = new GenericRepository<Stage>(_context);
+            MainActivityRepository = new GenericRepository<MainActivity>(_context);
+            ActivityTypeRepository = new GenericRepository<ActivityType>(_context);
+            ActivityRepository = new GenericRepository<Activity>(_context);
+            StudentProgressRepository = new GenericRepository<StudentProgress>(_context);
+        }
+
         public async Task<int> CompleteAsync() => await _context.SaveChangesAsync();
-        public void Dispose() => _context.Dispose();
+        public void Dispose() => _context?.Dispose();
     }
 }

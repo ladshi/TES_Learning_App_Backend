@@ -36,5 +36,19 @@ namespace TES_Learning_App.API.Controllers
             var username = User.Identity?.Name;
             return Ok($"Hello, {username}! You have successfully accessed a secure endpoint.");
         }
+
+        [HttpGet("check-admin")]
+        public async Task<IActionResult> CheckAdmin()
+        {
+            var adminUser = await _authService.CheckAdminUserAsync();
+            return Ok(adminUser);
+        }
+
+        [HttpPost("create-admin")]
+        public async Task<IActionResult> CreateAdmin()
+        {
+            var result = await _authService.CreateAdminUserAsync();
+            return Ok(result);
+        }
     }
 }

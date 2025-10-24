@@ -19,6 +19,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Student> Students { get; set; }
+    public DbSet<Admin> Admins { get; set; }
 
     // --- Content & Curriculum World ---
     public DbSet<Language> Languages { get; set; }

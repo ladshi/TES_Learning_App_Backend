@@ -19,7 +19,12 @@ namespace TES_Learning_App.Infrastructure.Services_external
         public TokenService(IConfiguration config)
         {
             _config = config;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Secret"]));
+            var secret = _config["JwtSettings:Secret"];
+            if (string.IsNullOrEmpty(secret))
+            {
+                throw new InvalidOperationException("JWT Secret is not configured in appsettings.json");
+            }
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         }
         public string CreateToken(User user)
         {

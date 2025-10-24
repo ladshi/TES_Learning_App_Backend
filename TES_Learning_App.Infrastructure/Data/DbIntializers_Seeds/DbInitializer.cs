@@ -17,6 +17,7 @@ namespace TES_Learning_App.Infrastructure.Data.DbIntializers_Seeds
             // Call the seed methods from other seed classes
             LanguageSeeder.Seed(context);
             RoleSeeder.Seed(context);
+            AdminSeeder.Seed(context);
 
             // Add calls to other seeders as needed
             // Example:

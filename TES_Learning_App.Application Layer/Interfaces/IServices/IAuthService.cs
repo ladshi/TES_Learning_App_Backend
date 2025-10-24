@@ -13,5 +13,7 @@ namespace TES_Learning_App.Application_Layer.Interfaces.IServices
     {
         Task<AuthResponseDto> RegisterAsync(RegisterDto dto);
         Task<AuthResponseDto> LoginAsync(LoginDto dto);
+        Task<object> CheckAdminUserAsync();
+        Task<object> CreateAdminUserAsync();
     }
 }

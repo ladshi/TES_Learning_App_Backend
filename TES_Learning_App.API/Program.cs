@@ -24,13 +24,22 @@ namespace TES_Learning_App.API
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add services to the container.
-
             builder.Services.AddControllers();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+
+            // Add CORS services
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
 
             // Add your custom Authentication Extension for JWT
             builder.Services.AddApiAuthentication(builder.Configuration);
@@ -63,6 +72,10 @@ namespace TES_Learning_App.API
 
             app.UseHttpsRedirection();
 
+            // Enable CORS
+            app.UseCors("AllowAll");
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

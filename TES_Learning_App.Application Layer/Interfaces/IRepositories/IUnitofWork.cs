@@ -11,6 +11,7 @@ namespace TES_Learning_App.Application_Layer.Interfaces.IRepositories
     {
         // User & Profile Repositories
         IAuthRepository AuthRepository { get; }
+        IGenericRepository<User> UserRepository { get; }
         IGenericRepository<Role> RoleRepository { get; }      
         IGenericRepository<Admin> AdminRepository { get; }     
         //IGenericRepository<Student> StudentRepository { get; }
